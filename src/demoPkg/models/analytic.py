@@ -1,5 +1,6 @@
 import numpy as np
-
+from sky.plotlib import LinePlot, ContourPlot
+from sky.datastructures import Grid
 
 class analytic_model_1d():
     def __init__(self, config, logger = None) -> None:

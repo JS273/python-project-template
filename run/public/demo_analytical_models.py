@@ -1,10 +1,10 @@
 import numpy as np
-from myPkg.models.analytic import analytic_model_1d, analytic_model_2d
-from myPkg.utils.plotlib import *
-from myPkg.utils.filemanager import *
-from myPkg.utils.logger import *
-from myPkg.utils.argparser import get_config
-
+import os
+from demoPkg.models.analytic import analytic_model_1d, analytic_model_2d
+from demoPkg.utils.filemanager import save_script
+from demoPkg.utils.logger import init_logger
+from demoPkg.utils.argparser import get_config
+from sky.plotlib import Plotter, get_multcolumn_subplot
 
 # ---------------------
 # --- Setup section ---
@@ -41,8 +41,8 @@ plt_B = my_mod_B.calculate(x_disc, y_disc, returnType= "plot")
 # --------------------
 
 # Set up plotter objects
-plotter = Plotter(save_path = result_folder, stylesheet= "src\\myPkg\\utils\\mpl_stylesheets\\presentation.mplstyle")
-plotter_paper = Plotter(save_path = result_folder, stylesheet= "src\\myPkg\\utils\\mpl_stylesheets\\paper.mplstyle")
+plotter = Plotter(save_path = result_folder, stylesheet= "src\\demoPkg\\utils\\mpl_stylesheets\\presentation.mplstyle")
+plotter_paper = Plotter(save_path = result_folder, stylesheet= "src\\demoPkg\\utils\\mpl_stylesheets\\paper.mplstyle")
 
 # Create plots
 plotter.plot(plt_A, filename = f'{tag}_plot1')
