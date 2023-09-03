@@ -16,7 +16,6 @@ class analytic_model_1d():
         if self.logger is not None: self.logger.info("Mod 1 started calculation")
 
         y = self.amp * np.sin(2 * np.pi * self.freq * x)
-        y2 = self.amp2 * np.sin(2 * np.pi * self.freq * x)
         y3 = 4* self.amp2 * np.sin(2 * np.pi * self.freq * x)
 
         if self.logger is not None: self.logger.info("Mod 1 finished calculation \n")
@@ -26,7 +25,6 @@ class analytic_model_1d():
         plt.x_label = self.xlabel
         plt.y_label = self.ylabel
         plt.color_no = 0
-        plt.add_line(y2, legend = "Second Model")
 
         plt2 = LinePlot(x,y3)
         plt2.xlabel = self.xlabel
@@ -38,6 +36,33 @@ class analytic_model_1d():
         elif returnType == "numpy":
             return y
         
+
+class analytic_model_1b_1d():
+    def __init__(self, config, logger = None) -> None:
+        self.xlabel = "x"
+        self.ylabel = "pressure" 
+        self.logger = logger
+        self.amp = config.amp
+        self.amp2 = config.amp2
+        self.freq = config.freq
+
+    def calculate(self, x, returnType = "numpy"):
+
+        if self.logger is not None: self.logger.info("Mod 1b started calculation")
+
+        y = np.exp(-0.2*x) * self.amp * np.sin(2 * np.pi * self.freq * x)
+
+        if self.logger is not None: self.logger.info("Mod 1b finished calculation \n")
+
+
+        plt = LinePlot(x,y, linestyle = "--")
+        plt.x_label = self.xlabel
+        plt.y_label = self.ylabel
+
+        if returnType == "plot":
+            return plt 
+        elif returnType == "numpy":
+            return y
 
 class analytic_model_2d():
     def __init__(self, logger = None) -> None:
