@@ -8,7 +8,6 @@ class analytic_model_1d():
         self.ylabel = "pressure" 
         self.logger = logger
         self.amp = config.amp
-        self.amp2 = config.amp2
         self.freq = config.freq
 
     def calculate(self, x, returnType = "numpy"):
@@ -16,7 +15,7 @@ class analytic_model_1d():
         if self.logger is not None: self.logger.info("Mod 1 started calculation")
 
         y = self.amp * np.sin(2 * np.pi * self.freq * x)
-        y3 = 4* self.amp2 * np.sin(2 * np.pi * self.freq * x)
+        y3 = 4* self.amp * np.sin(2 * np.pi * self.freq * x)
 
         if self.logger is not None: self.logger.info("Mod 1 finished calculation \n")
 
