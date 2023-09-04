@@ -1,6 +1,6 @@
 import numpy as np
 import os
-from demoProj.models.analytic import analytic_model_1d, analytic_model_2d, analytic_model_1b_1d
+from demoProj.models.analytic import analytic_model_1, analytic_model_2, analytic_model_3
 from demoProj.utils.filemanager import save_script
 from demoProj.utils.logger import init_logger
 from demoProj.utils.argparser import get_config
@@ -25,17 +25,17 @@ config = get_config("run\intern\model_A.yaml", result_folder, logger)
 # -------------------
 
 # create and run model 1
-my_mod_1 = analytic_model_1d(config = config, logger = logger)
+my_mod_1 = analytic_model_1(config = config, logger = logger)
 x = np.linspace(0.0, 10, config.nx)
 plt_A = my_mod_1.calculate(x, returnType= "plot")
 
 # create and run model 1b
-my_mod_1b = analytic_model_1b_1d(config = config, logger = logger)
+my_mod_1b = analytic_model_2(config = config, logger = logger)
 x = np.linspace(0.0, 10, config.nx)
 plt_B = my_mod_1b.calculate(x, returnType= "plot")
 
 # Create and run model B
-my_mod_2 = analytic_model_2d(logger = logger)
+my_mod_2 = analytic_model_3(logger = logger)
 x_disc = np.linspace(0.0, 10, 100)
 y_disc = np.linspace(0.0, 10, 50)
 plt_C = my_mod_2.calculate(x_disc, y_disc, returnType= "plot")

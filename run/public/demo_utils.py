@@ -1,10 +1,10 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-from demoProj.models.analytic import analytic_model_1d
+from demoProj.models.analytic import analytic_model_0
 from demoProj.utils.filemanager import save_script
 from demoProj.utils.logger import init_logger
-from demoProj.utils.argparser import get_config
+from demoProj.utils.argparser import get_config_model_0
 
 
 # ---------------------
@@ -19,14 +19,14 @@ result_folder = save_script(os.path.realpath(__file__), tag, max_daily_folders =
 logger = init_logger(result_folder, "logfile")
 
 # Get user input from: cmd line > config file > defaults
-config = get_config("run\\public\\util_demo.yaml", result_folder, logger)
+config = get_config_model_0("run\\public\\util_demo.yaml", result_folder, logger)
 
 # -------------------
 # --- Run section ---
 # -------------------
 
 # create and run model 1
-my_mod_1 = analytic_model_1d(config = config, logger = logger)
+my_mod_1 = analytic_model_0(config = config, logger = logger)
 x = np.linspace(0.0, 10, config.nx)
 y = my_mod_1.calculate(x)
 

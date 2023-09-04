@@ -2,7 +2,25 @@ import numpy as np
 from sky.plotlib import LinePlot, ContourPlot
 from sky.datastructures import Grid
 
-class analytic_model_1d():
+class analytic_model_0():
+    def __init__(self, config, logger = None) -> None:
+        self.logger = logger
+        self.amp = config.amp
+        self.freq = config.freq
+
+    def calculate(self, x):
+
+        if self.logger is not None: self.logger.info("Mod 1 started calculation")
+
+        y = self.amp * np.sin(2 * np.pi * self.freq * x)
+
+        if self.logger is not None: self.logger.info("Mod 1 finished calculation \n")
+
+        return y
+
+
+
+class analytic_model_1():
     def __init__(self, config, logger = None) -> None:
         self.xlabel = "x"
         self.ylabel = "pressure" 
@@ -15,28 +33,21 @@ class analytic_model_1d():
         if self.logger is not None: self.logger.info("Mod 1 started calculation")
 
         y = self.amp * np.sin(2 * np.pi * self.freq * x)
-        y3 = 4* self.amp * np.sin(2 * np.pi * self.freq * x)
 
         if self.logger is not None: self.logger.info("Mod 1 finished calculation \n")
-
 
         plt = LinePlot(x,y)
         plt.x_label = self.xlabel
         plt.y_label = self.ylabel
         plt.color_no = 0
 
-        plt2 = LinePlot(x,y3)
-        plt2.xlabel = self.xlabel
-        plt2.ylabel = self.ylabel
-        plt2.color_no = 1
-
         if returnType == "plot":
-            return [plt, plt2] 
+            return plt
         elif returnType == "numpy":
             return y
         
 
-class analytic_model_1b_1d():
+class analytic_model_2():
     def __init__(self, config, logger = None) -> None:
         self.xlabel = "x"
         self.ylabel = "pressure" 
@@ -63,7 +74,7 @@ class analytic_model_1b_1d():
         elif returnType == "numpy":
             return y
 
-class analytic_model_2d():
+class analytic_model_3():
     def __init__(self, logger = None) -> None:
         self.xlabel = "x"
         self.ylabel = "y"
