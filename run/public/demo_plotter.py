@@ -1,10 +1,10 @@
 import numpy as np
 import os
 from demoProj.models.analytic import analytic_model_1, analytic_model_2, analytic_model_3
-from demoProj.utils.filemanager import save_script
 from demoProj.utils.logger import init_logger
 from demoProj.utils.argparser import get_config
 from sky.plotlib import Plotter, get_multcolumn_subplot
+from sky.filemanager import save_script
 
 # ---------------------
 # --- Setup section ---
