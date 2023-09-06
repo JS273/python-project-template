@@ -46,16 +46,16 @@ plt_C = my_mod_2.calculate(x_disc, y_disc, returnType= "plot")
 # --------------------
 
 # Set up plotter objects
-plotter = Plotter(save_path = result_folder, stylesheet= "src\\demoProj\\utils\\mpl_stylesheets\\presentation.mplstyle")
+plotter_pres = Plotter(save_path = result_folder, stylesheet= "src\\demoProj\\utils\\mpl_stylesheets\\presentation.mplstyle")
 plotter_paper = Plotter(save_path = result_folder, stylesheet= "src\\demoProj\\utils\\mpl_stylesheets\\paper.mplstyle")
 
 # Create plots
-plotter.plot(plt_A, filename = f'{tag}_plot1')
+plotter_pres.plot(plt_A, filename = f'{tag}_plot1')
 
 plotter_paper.plot(plt_A, plt_B, plt_C, filename = f'{tag}_plot2', subplot_grid = [3,1])
 
 fig, ax = get_multcolumn_subplot(n_regular_plots = 3, n_multi_colm = 1, regular_plot_grid = [1,3])
-plotter.plot(plt_A, plt_B, plt_C, plt_A, filename = f'{tag}_plot3', custom_fig = [fig, ax])
+plotter_pres.plot(plt_A, plt_B, plt_C, plt_A, filename = f'{tag}_plot3', custom_fig = [fig, ax])
 
 
 
