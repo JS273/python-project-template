@@ -18,7 +18,7 @@ result_folder = save_script(os.path.realpath(__file__), tag, max_daily_folders =
 logger = init_logger(result_folder, "logfile")
 
 # Get user input from: cmd line > config file > defaults
-config = get_config("run\intern\model_A.yaml", result_folder, logger)
+config = get_config("run\public\model_A.yaml", result_folder, logger)
 
 # -------------------
 # --- Run section ---
@@ -46,8 +46,8 @@ plt_C = my_mod_2.calculate(x_disc, y_disc, returnType= "plot")
 # --------------------
 
 # Set up plotter objects
-plotter_pres = Plotter(save_path = result_folder, stylesheet= "src\\demoProj\\utils\\mpl_stylesheets\\presentation.mplstyle")
-plotter_paper = Plotter(save_path = result_folder, stylesheet= "src\\demoProj\\utils\\mpl_stylesheets\\paper.mplstyle")
+plotter_pres = Plotter(save_path = result_folder, stylesheet= "presentation")
+plotter_paper = Plotter(save_path = result_folder, stylesheet= "paper")
 
 # Create plots
 plotter_pres.plot(plt_A, filename = f'{tag}_plot1')
